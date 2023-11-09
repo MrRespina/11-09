@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="index.css">
+<script type="text/javascript">
+	function checkValid() {
+		// input의 내용을 받아와야
+		// document.form.input
+		let idInput = document.ff.idid;
+		let pwInput = document.ff.pwpw;
+		let pwcheckInput = document.ff.pwChk;
+		let footInput = document.ff.foot;
+
+		// alert(idInput.value); 내용 확인용?
+		if (!idInput.value) {
+			alert('ID를 입력해주세요!!!');
+			idInput.focus();
+			return false;
+		} else if (idInput.value.length < 2) {
+			alert('ID는 2~10글자로 사용할 것!');
+			idInput.focus();
+			idInput.value = "";
+			return false;
+		}
+
+		if (!pwInput.value) {
+			alert('password를 입력해주세요!!!');
+			pwInput.focus();
+			return false;
+		} else if (pwInput.value.length < 5) {
+			alert('password는 5~10글자로 사용할 것!');
+			pwInput.focus();
+			pwInput.value = "";
+			return false;
+		}
+		
+		
+
+		if (!pwcheckInput.value) {
+			alert('확인용 password를 입력해주세요!!!');
+			pwcheckInput.focus();
+			return false;
+		} else if (pwcheckInput.value.length < 5) {
+			alert('확인용 password는 5~10글자 입니다.');
+			pwcheckInput.focus();
+			pwcheckInput.value = "";
+			return false;
+		}
+
+		if (pwInput.value !== pwcheckInput.value) {
+			alert('비밀번호와 확인용 비밀번호가 맞지 않습니다.');
+			pwcheckInput.focus();
+			pwcheckInput.value = "";
+			return false;
+
+		}
+		
+		let numExist = false;
+		let num = "369";
+
+		for (var i = 0; i < num.length; i++) {
+			if (pwInput.value.indexOf(num[i]) !== -1) {
+				numExist = true;
+				
+				break;
+			}
+		}
+		
+		let letterExist = false;
+		let letter = "hk";
+
+		for (var i = 0; i < letter.length; i++) {
+			if (pwInput.value.indexOf(letter[i]) !== -1) {
+				letterExist = true;			
+				break;
+			}
+		}
+		
+		// letterExist가 false면 , 아래 if문에 걸림.(조건 충족이 안되었기 떄문에.)
+		// letterExist가 true면 아래 if문에 안걸림.
+
+		// !true = false > if(false) > 조건식 안돌아감.
+		if (!numExist || !letterExist) {
+			alert('있어야 할 게 없습니다.\n3,6,9와 h,k를 섞은 비밀번호를 만들어주세요.');
+			return false;
+		}
+
+		if (!footInput.value) {
+			alert('발 사이즈를 입력해주세요!!!');
+			footInput.focus();
+			return false;
+		} else if (isNaN(footInput.value) == true) {
+			alert('발 사이즈는 숫자만 입력해주세요!');
+			footInput.value = "";
+			footInput.focus();
+			return false;
+		} else if (footInput.value > 350) {
+			alert('정확한 발 사이즈를 입력해주세요!');
+			footInput.value = "";
+			footInput.focus();
+			return false;
+		}
+		return true;
+		
+	}
+</script>
+<title>무엇을 입력해?</title>
+</head>
+<body>
+	<!-- 
+		onsubmit : 요청 >
+		return true : 개발자의 의도대로 되었을 때.
+		return false : 조건에 걸려서 요청 X
+	 -->
+
+	<form name="ff" onsubmit="return checkValid();">
+		<table id="maintable" border=1 align="center"
+			style='margin-top: 200px'>
+			<tr>
+				<td>id<input name="idid" id="id" maxlength="10"
+					autofocus="autofocus" placeholder="10 글자까지"
+					style='margin-left: 115px'>
+				</td>
+			</tr>
+			<tr>
+				<td>password<input name="pwpw" id="pw" maxlength="10"
+					type="password" placeholder="10 글자까지" style='margin-left: 47px'>
+				</td>
+			</tr>
+			<tr>
+				<td>password 확인<input name="pwChk" id="checkPw" maxlength="10"
+					placeholder="10 글자까지">
+				</td>
+			</tr>
+			<tr>
+				<td>발사이즈<input name="foot" id="footsize" placeholder="발사이즈 입력"
+					style='margin-left: 51px'>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<button id="sub">입력 완료</button>
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>

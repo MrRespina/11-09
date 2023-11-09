@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function getInfo(){
+		let mem = document.getElementById("aa");
+		//let mem_res = mem.value;
+		//console.log(mem_res);
+		//console.log(mem.value);
+		
+		// indexOf로 내가 찾는 글자가 있으면 : 해당하는 글자 위치 알려줌(0부터!) 없다면 -1
+		console.log(mem.value.indexOf('a'));
+	}
+</script>
+
+</head>
+<body>
+	<input id="aa">
+	<button onclick="getInfo();">완료</button>
+</body>
+</html>

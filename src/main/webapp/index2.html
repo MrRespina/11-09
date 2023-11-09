@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function goHaha(){
+		//	1. 변수에 input에 쓰인 내용을 담기
+		let liInput = document.getElementById("li"); // id가 li인 것.
+		// alert(liInput);	// [object HTMLInputElement]
+		let liInputVal = liInput.value;
+		alert(liInputVal);
+		//loaction.href ="ㅋㅋㅋ?li=" + liInputVal;
+	}
+</script>
+</head>
+<body>
+<!-- input에 값 넣어서
+	 button 더블 클릭하면 ㅋㅋㅋ?li=hi로 GET 방식 요청
+	 <form> : 입력받아서 요청할 때 필수품 X
+	 <form> : 입력받아서 요청할 때 편함 O
+	 
+	 주소입력 : GET
+	 <a> : GET
+	 <form> + <button> : GET / POST
+	 JavaScript : GET
+  -->
+	<input id="li">
+	<button onclick="goHaha();">확인!</button>
+	<button ondblclick="goHaha();">더블로</button>
+	
+</body>
+</html>
